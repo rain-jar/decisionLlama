@@ -72,7 +72,12 @@ function Game() {
         height: '100vh',
         textAlign: 'center',
         position: 'relative', // Ensure that children use this as a reference point
-        backgroundColor: '#1c1c1e'
+        backgroundColor: '#000000',
+        padding: '20px',
+        // Mobile responsive design
+        '@media (max-width: 600px)': {
+          padding: '10px',  // Adjust padding for smaller screens
+        },
       }}
     >
       {/* Header */}
@@ -80,7 +85,11 @@ function Game() {
         fontFamily: "'Creepster', cursive",  // Spooky Halloween font
         color: '#ff7518',  // Halloween Orange
         fontSize: '48px',
-        marginTop: '40px'
+        marginTop: '40px',
+        // Adjust font size for mobile
+        '@media (max-width: 600px)': {
+          fontSize: '32px',
+        },
       }}>
         Llama Dilemma
       </Typography>
@@ -90,11 +99,19 @@ function Game() {
         fontFamily: "'Creepster', cursive",
         color: '#f8f8ff',  // Ghostly White
         fontSize: '24px',
+        // Adjust font size for mobile
+        '@media (max-width: 600px)': {
+          fontSize: '18px',
+        },
       }}>
         Make a choice to save the llama, before time runs out!!
       </Typography>
-      <Typography variant="h6">
-        Enter two things you have recently struggled to choose between  
+      <Typography variant="h6" sx={{
+        '@media (max-width: 600px)': {
+          fontSize: '18px',
+        },
+      }}>
+        Enter two things you have recently struggled to choose between
       </Typography>
 
       {/* Animation Box */}
@@ -106,6 +123,11 @@ function Game() {
           marginBottom: 0,
           borderRadius: '10px',
           overflow: 'hidden',
+          // Make the game area responsive
+          '@media (max-width: 600px)': {
+            width: '100%',  // Take full width of the screen
+            height: '400px',  // Adjust height for smaller devices
+          },
         }}
       >
         {/* Background Animation */}
@@ -167,7 +189,7 @@ function Game() {
         <motion.div
           animate={isReset ? { x: '0%' } : gameStarted ? { x: [0, 0] } : { x: 0 }} // Dog runs
           transition={isReset ? { duration: 0 } : { duration: 13, ease: [0.05, 0.1, 0.7, 4] }}
-          style={{ height: '40%', width: '40%', position: 'absolute', right: '5%', zIndex: 2, top: '40%' }}
+          style={{ height: '40%', width: '40%', position: 'absolute', right: '-5%', zIndex: 2, top: '40%' }}
         >
           {monsterX > 350 ? (
             <Player
@@ -187,9 +209,18 @@ function Game() {
       </Box>
 
       {/* Display Result */}
-
-      {dogWins === true && <Typography variant="h5" sx={{marginBottom: 3}}>Great work! You saved the llama and solved your dilemma!</Typography>}
-      {dogWins === false && <Typography variant="h5" sx={{marginBottom: 3}}>The monster won! Listen to your gut and take that leap of faith</Typography>}
+      {dogWins === true && <Typography variant="h5" sx={{
+        marginBottom: 3,
+        '@media (max-width: 600px)': {
+          fontSize: '18px',
+        },
+      }}>Great work! You saved the llama and solved your dilemma!</Typography>}
+      {dogWins === false && <Typography variant="h5" sx={{
+        marginBottom: 3,
+        '@media (max-width: 600px)': {
+          fontSize: '18px',
+        },
+      }}>The monster won! Listen to your gut and take that leap of faith</Typography>}
 
       {/* Display timer */}
       {/*<Typography variant="h6">Time Remaining: {timer}s</Typography>*/}
@@ -204,7 +235,7 @@ function Game() {
               value={choices.choice1}
               onChange={(e) => setChoices({ ...choices, choice1: e.target.value })}
               sx={{
-                marginRight : 2,
+                marginRight: 2,
                 width: '300px',
                 input: {
                   fontFamily: "'Creepster', cursive",
@@ -233,6 +264,10 @@ function Game() {
                   '&.Mui-focused fieldset': {
                     borderColor: '#ff7518',  // Focus color
                   },
+                },
+                // Adjust width for mobile
+                '@media (max-width: 600px)': {
+                  width: '100%',  // Full width for mobile
                 },
               }}
             />
@@ -271,6 +306,10 @@ function Game() {
                     borderColor: '#ff7518',  // Focus color
                   },
                 },
+                // Adjust width for mobile
+                '@media (max-width: 600px)': {
+                  width: '100%',  // Full width for mobile
+                },
               }}
             />
           </Box>
@@ -287,6 +326,11 @@ function Game() {
             transition: 'all 0.2s ease',
             borderRadius: '5px',
             padding: '10px 20px',
+            // Make button responsive
+            '@media (max-width: 600px)': {
+              width: '100%',
+              fontSize: '16px',
+            },
           }}>
             Start
           </Button>
@@ -307,6 +351,11 @@ function Game() {
               transition: 'all 0.2s ease',
               borderRadius: '5px',
               padding: '10px 20px',
+              // Make button responsive
+              '@media (max-width: 600px)': {
+                width: '100%',
+                fontSize: '16px',
+              },
             }}>
               {choices.choice1}
             </Button>
@@ -325,6 +374,11 @@ function Game() {
               transition: 'all 0.2s ease',
               borderRadius: '5px',
               padding: '10px 20px',
+              // Make button responsive
+              '@media (max-width: 600px)': {
+                width: '100%',
+                fontSize: '16px',
+              },
             }}>
               {choices.choice2}
             </Button>
@@ -346,6 +400,11 @@ function Game() {
           transition: 'all 0.2s ease',
           borderRadius: '5px',
           padding: '10px 20px',
+          // Make button responsive
+          '@media (max-width: 600px)': {
+            width: '100%',
+            fontSize: '16px',
+          },
         }}>
           Try Again
         </Button>
