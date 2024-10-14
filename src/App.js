@@ -220,7 +220,7 @@ function Game() {
         '@media (max-width: 600px)': {
           fontSize: '18px',
         },
-      }}>The monster won! Listen to your gut and take that leap of faith</Typography>}
+      }}>Took too long. You might wanna try a therapist instead </Typography>}
 
       {/* Display timer */}
       {/*<Typography variant="h6">Time Remaining: {timer}s</Typography>*/}
